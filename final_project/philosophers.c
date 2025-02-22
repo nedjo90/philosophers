@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pĥilosophers.c                                     :+:      :+:    :+:   */
+/*   philosophers.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhan <nhan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 15:00:24 by nhan              #+#    #+#             */
-/*   Updated: 2025/02/22 16:33:03 by nhan             ###   ########.fr       */
+/*   Updated: 2025/02/22 18:40:25 by nhan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,35 +17,52 @@ static int	ft_is_positive_number(char *arg, int *nb)
 	int	i;
 
 	i = 0;
-	*nb = -1;
 	while (arg[i])
 	{
 		if (!ft_isdigit(arg[i]))
 		{
 			printf("%s\n", ERROR_NOT_DIGIT);
+			*nb = -1;
 			return (FALSE);
 		}
 		i++;
 	}
 	*nb = ft_atoi(arg);
-	return (TRUE);
+	if (*nb >= 0)
+		return (TRUE);
+	else
+	{
+		*nb = -1;
+		return (FALSE);
+	}
 }
 
-static t_input	ft_check_input(int argc, char **argv)
+static int	ft_check_input(int argc, char **argv, t_input *input)
 {
-	t_input	input;
+	int	is_valid;
 
+	is_valid = TRUE;
 	if (!(argc == 5 || argc == 6))
+	{
 		printf("%s\n", ERROR_NB_INPUT);
-	ft_is_positive_number(argv[1], &(input.nb_philo));
-	ft_is_positive_number(argv[2], &(input.time_die));
-	ft_is_positive_number(argv[3], &(input.time_eat));
-	ft_is_positive_number(argv[4], &(input.time_sleep));
-	if (argc == 5)
-		input.nb_time_eat = -1;
-	else
-		ft_is_positive_number(argv[5], &input.nb_time_eat);
-	return (input);
+		is_valid = FALSE;
+	}
+	if (is_valid == TRUE)
+		is_valid = ft_is_positive_number(argv[1], &(input->nb_philo));
+	if (is_valid == TRUE)
+		is_valid = ft_is_positive_number(argv[2], &(input->time_die));
+	if (is_valid == TRUE)
+		is_valid = ft_is_positive_number(argv[3], &(input->time_eat));
+	if (is_valid == TRUE)
+		is_valid = ft_is_positive_number(argv[4], &(input->time_sleep));
+	if (is_valid == TRUE)
+	{
+		if (argc == 5)
+			input->nb_time_eat = -1;
+		else
+			is_valid = ft_is_positive_number(argv[5], &(input->nb_time_eat));
+	}
+	return (is_valid);
 }
 
 static void	ft_display_input(t_input input)
@@ -64,11 +81,9 @@ static void	ft_display_input(t_input input)
 
 int	main(int argc, char **argv)
 {
-	t_input input;
+	t_input	input;
 
-	input = ft_check_input(argc, argv);
-	if (!(input.nb_philo < 0 && input.time_die < 0 && input.time_eat < 0
-			&& input.time_sleep < 0 && input.nb_time_eat < 0))
+	if (ft_check_input(argc, argv, &input) == TRUE)
 	{
 		ft_display_input(input);
 		return (0);
