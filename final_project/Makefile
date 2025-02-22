@@ -1,4 +1,6 @@
 SRCS=srcs/ft_atoi.c\
+srcs/ft_isdigit.c\
+srcs/ft_strlen.c\
 
 CC=gcc
 CFLAGS=-I . -Wall -Wextra -Werror 
