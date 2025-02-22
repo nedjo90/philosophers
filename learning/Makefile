@@ -6,7 +6,7 @@
 #    By: nhan <nhan@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/07 03:06:40 by nhan              #+#    #+#              #
-#    Updated: 2025/02/15 15:41:27 by nhan             ###   ########.fr        #
+#    Updated: 2025/02/22 15:12:07 by nhan             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,12 @@ pthread: $(NAME)
 
 pthread1: $(NAME)
 	$(CC) pthread1_learning.c $(INCLUDES) -L../libft -lft -lpthread1 -D_REENTRANT -o pthread1.out -g3
+
+banking: $(NAME)
+	$(CC) banking.c $(INCLUDES) -L../libft -lft -D_REENTRANT -o banking.out -g3
+
+mutex: $(NAME)
+	$(CC) mutex.c $(INCLUDES) -L../libft -lft -D_REENTRANT -o mutex.out -g3
 	
 
 clean:
@@ -50,6 +56,8 @@ clean:
 	$(RM) gettimeofday.out
 	$(RM) pthread.out
 	$(RM) pthread1.out
+	$(RM) banking.out
+	$(RM) mutex.out
 
 fclean: clean
 	make fclean -C ../libft
