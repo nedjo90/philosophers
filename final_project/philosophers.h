@@ -6,7 +6,7 @@
 /*   By: nhan <han.necati@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 14:57:42 by nhan              #+#    #+#             */
-/*   Updated: 2025/02/22 22:48:17 by nhan             ###   ########.fr       */
+/*   Updated: 2025/02/22 22:54:34 by nhan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdbool.h>
 
 typedef enum e_thread_action
 {
