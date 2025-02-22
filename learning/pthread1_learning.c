@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   learning.h                                         :+:      :+:    :+:   */
+/*   pthread1_learning.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhan <nhan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/15 11:54:59 by nhan              #+#    #+#             */
-/*   Updated: 2025/02/15 14:56:43 by nhan             ###   ########.fr       */
+/*   Created: 2025/02/15 15:42:10 by nhan              #+#    #+#             */
+/*   Updated: 2025/02/15 16:12:19 by nhan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEARNING_H
-# define LEARNING_H
+#include "learning.h"
 
-# include "ft_printf.h"
-# include "get_next_line.h"
-# include "libft.h"
-# include <pthread.h>
-# include <sys/time.h>
-
-#endif
+int	main(int argc, char const *argv[])
+{
+	
+	return (0);
+}
